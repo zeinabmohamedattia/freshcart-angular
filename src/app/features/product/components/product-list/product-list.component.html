@@ -1,0 +1,14 @@
+<section class="my-10 py-10">
+    <input type="text" [(ngModel)]="searchTerm" class="main-input w-1/2 mx-auto" placeholder="search...">
+ <div class="container mx-auto">
+    <h2 class="capitalize font-bold text-2xl text-main my-5">popular products</h2>
+    <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-12">
+        @for (product of allProducts  | search:searchTerm; track product._id) {
+            <app-product-card [product]="product" (addToCart)="addProductToCart($event)"></app-product-card>
+
+        }@empty {
+            <h2 class="text-center font-bold text-main text-3xl col-span-12 my-5">loading...</h2>
+        }
+    </div>
+ </div>
+</section>

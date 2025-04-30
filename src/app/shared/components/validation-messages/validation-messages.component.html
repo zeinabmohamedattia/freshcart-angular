@@ -1,0 +1,32 @@
+@if (controls?.errors&& controls?.touched&& !controls?.get('rePassword')) {
+    <div class="border-red-400 bg-red-100 text-red-700 px-4 rounded relative my-3 border ">
+      <ul class="list-disc pl-5">
+        @if (controls?.getError('required')) {
+          <li>Input is required</li>
+        }@if (controls?.getError('minlength')) {
+          <li>Input must be at least 2 characters</li>
+        }@if (controls?.getError('maxlength')) {
+          <li>Input must be at most 20 characters</li>
+        }
+        @if (controls?.getError('email')) {
+            <li>Please enter a valid email</li>
+
+          }
+          @if (controls?.getError('pattern')) {
+            <li>At least one upper case English letter</li>
+            <li>At least one lower case English letter</li>
+            <li>At least one digit</li>
+            <li>At least one special character</li>
+            <li>Minimum eight in length</li>
+          }
+      </ul>
+    </div>
+  }
+  @if (controls?.getError('missmatch')&&controls?.get('rePassword')?.touched) {
+    <div class="border-red-400 bg-red-100 text-red-700 px-4 rounded relative my-3 border ">
+      <ul class="list-disc pl-5">
+        <li>passwords don't match</li>
+    
+      </ul>
+    </div>
+    }
